@@ -18,14 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from accounts.views import user_login
 
 
 
-def redirect_to_home(rewust):
+def redirect_to_home(request):
     return redirect("home")
 
 urlpatterns = [
-    path("", redirect_to_home, name="homepage"),
+    path("accounts/", include("accounts.urls")),
+    path("", redirect_to_home, name="home"),
     path("receipts/", include("receipts.urls")),
     path("admin/", admin.site.urls),
 ]
