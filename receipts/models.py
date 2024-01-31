@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your models here.
 
@@ -33,7 +34,6 @@ class Account(models.Model):
 
   def __str__(self):
     return self.name
-
 
 
 
