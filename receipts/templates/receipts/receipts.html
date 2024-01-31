@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Receipts</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>My Receipts</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Total</th>
+            <th>Tax</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Account</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in receipt_list %}
+            <tr>
+              <td>{{ item.vendor }}</td>
+              <td>{{ item.total }}</td>
+              <td>{{ item.tax }}</td>
+              <td>{{ item.date|date:'M d, Y' }}</td>
+              <td>{{ item.category.name }}</td>
+              <td>{{ item.account.name }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

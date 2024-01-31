@@ -5,7 +5,7 @@ from receipts.models import ExpenseCategory, Account, Receipt
 
 
 @admin.register(ExpenseCategory)
-class RecipeAdmin(admin.ModelAdmin):
+class ExpenseCategoryAdmin(admin.ModelAdmin):
     list_display = [
         "name",
     ]
@@ -13,7 +13,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Account)
-class RecipeAdmin(admin.ModelAdmin):
+class AccountAdmin(admin.ModelAdmin):
     list_display = [
         "name",
         "number",
@@ -22,7 +22,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Receipt)
-class RecipeAdmin(admin.ModelAdmin):
+class ReceiptAdmin(admin.ModelAdmin):
     list_display = [
         "vendor",
         "total",
