@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 # Create your models here.
@@ -9,13 +8,10 @@ class ExpenseCategory(models.Model):
   name = models.CharField(max_length=50)
 
   owner = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         related_name = "categories",
         on_delete = models.CASCADE,
     )
-
-  def __str__(self):
-    return self.name
 
 
 
@@ -27,7 +23,7 @@ class Account(models.Model):
   number = models.CharField(max_length=20)
 
   owner = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         related_name = "accounts",
         on_delete = models.CASCADE,
     )
@@ -46,7 +42,7 @@ class Receipt(models.Model):
   date = models.DateTimeField()
 
   purchaser = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         related_name = "receipts",
         on_delete = models.CASCADE,
     )
