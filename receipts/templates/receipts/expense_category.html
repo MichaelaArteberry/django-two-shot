@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Account list</title>
+</head>
+
+<body>
+    <main>
+        <div>
+
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Number of Receipts</th>
+                </thead>
+                <tbody>
+
+                    {% for items in category_list %}
+
+                    <tr>
+                        <td>{{ items.name }}</td>
+                        <td>{{ items.owner.categories.count }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+</body>
+
+</html>
