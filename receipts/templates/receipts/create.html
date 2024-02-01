@@ -6,6 +6,33 @@
 </head>
 
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'signup' %}">Sign Up</a>
+                </li>
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    Hello, {{ user.username }}
+
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="{% url 'create_receipt' %}">Create Receipt</a>
+                </li>
+                <li>
+                    <a href="{% url 'category_list' %}">Expense Categories</a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
     <main>
         <div>
             <h1>Create Receipt</h1>

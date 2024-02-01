@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Receipts</title>
-  </head>
 
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="{% url 'signup' %}">Sign Up</a>
-          </li>
-          <li>
-            <a href="{% url 'login' %}">Login</a>
-          </li>
-          <li>
-            <a href="{% url 'logout' %}">Logout</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <title>Receipts</title>
+</head>
 
-    <main>
-      <h1>My Receipts</h1>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="{% url 'signup' %}">Sign Up</a>
+        </li>
+        <li>
+          <a href="{% url 'login' %}">Login</a>
+        </li>
+        <li>
+          {% if user.is_authenticated %}
+          Hello, {{ user.username }}
 
-      <table>
-        <thead>
-          <tr>
-            <th>Vendor</th>
-            <th>Total</th>
-            <th>Tax</th>
-            <th>Date</th>
-            <th>Category</th>
-            <th>Account</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in receipt_list %}
-            <tr>
-              <td>{{ item.vendor }}</td>
-              <td>{{ item.total }}</td>
-              <td>{{ item.tax }}</td>
-              <td>{{ item.date|date:'m/d/y' }}</td>
-              <td>{{ item.category.name }}</td>
-              <td>{{ item.account.name }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </main>
-  </body>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li>
+          <a href="{% url 'create_receipt' %}">Create Receipt</a>
+        </li>
+        <li>
+          <a href="{% url 'category_list' %}">Expense Categories</a>
+        </li>
+
+        {% endif %}
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>My Receipts</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Total</th>
+          <th>Tax</th>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Account</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in receipt_list %}
+        <tr>
+          <td>{{ item.vendor }}</td>
+          <td>{{ item.total }}</td>
+          <td>{{ item.tax }}</td>
+          <td>{{ item.date|date:'m/d/y' }}</td>
+          <td>{{ item.category.name }}</td>
+          <td>{{ item.account.name }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+
 </html>
